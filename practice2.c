@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main(void) {
-	int arr[5] = { 11, 22, 33, 44 ,55};
+	int arr[5] = { 11, 22, 33, 44 ,55 };
 	int *ptr1;
 	int *ptr2;
 	int *ptr3;
