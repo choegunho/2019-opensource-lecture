@@ -1,0 +1,266 @@
+#include <stdio.h>
+
+#include <stdlib.h>
+
+#include <string.h>
+
+
+
+#define MAX_NAME 50
+
+#define TRUE 1
+
+
+
+typedef struct node *NodePointer;
+
+typedef struct node {
+
+	int price;
+  
+  char author[10];
+  
+  char pub[50];
+
+	char name[MAX_NAME];
+
+	NodePointer link;
+
+} Node;
+
+
+
+void Make_Node(NodePointer );
+
+void Print_Node(NodePointer );
+
+void Modify_Node(NodePointer);
+
+
+
+int main( void )
+
+{
+
+	int i,j;
+
+	int nember;
+
+
+
+	NodePointer head = NULL;
+
+	NodePointer temp = head;
+
+
+
+	while(TRUE)
+
+	{
+
+		printf("1)enter \n 2) print  \n3) search \n 4) end\n");
+
+		scanf("%d",&nember);
+
+		switch(nember)
+
+		{
+
+		case 1:
+
+			Make_Node(&head);
+
+			break;
+
+
+
+		case 2:
+
+			Print_Node(head);
+
+			break;
+
+
+		case 3:
+
+			Modify_Node(&head);
+
+			break;
+
+
+
+		case 4:
+
+			return 0;
+
+			break;
+
+		}
+
+	}
+
+}
+
+
+
+void Make_Node(NodePointer *temp)
+
+{
+
+	int i;
+
+	NodePointer item;
+
+	NodePointer cur  = *temp;
+
+
+
+	item = (NodePointer)malloc(sizeof(Node));
+
+	printf("enter book's name : ");
+
+	scanf("%s", item->name);
+  
+	printf("enter author : ");
+
+	scanf("%s", item->author);
+  
+	printf("enter publisher : ");
+
+	scanf("%s", item->pub);
+
+	printf("enter price : ");
+
+	scanf("%d", &item->price);
+
+
+
+	item->link = NULL;
+
+
+
+	if(*temp == NULL)
+
+	{
+
+	
+
+		*temp = item;
+
+		return ;
+
+	}
+
+
+
+	else
+
+	{		
+
+		for( ; ;  )
+
+		{
+
+			if((cur)->link == NULL)
+
+			{
+
+				(cur)->link  = item;
+
+				break;
+
+			}
+
+			cur = cur->link;
+
+
+
+		}
+
+	
+
+
+
+	}
+
+}
+
+
+
+void Print_Node(NodePointer temp)
+
+{
+
+	for( ; temp != NULL ;temp = temp->link)
+
+	{
+
+		printf("name : %s  ", temp->name);
+    
+    printf("author : %s  ", temp->author);
+    
+    printf("publisher : %s  ", temp->publisher);
+
+		printf("price : %d  \n",temp->price);
+
+	}
+
+}
+
+void delete_Node(NodePointer *node)
+
+{
+
+	char findname[30];
+
+	NodePointer temp = *node;
+
+	NodePointer item;
+
+	printf("delete name :");
+
+	scanf("%s",findname);
+
+
+
+	for( ; temp != NULL ;temp = temp->link)
+
+	{
+
+		if(strcmp(temp->name,findname)== 0)
+
+		{
+
+		printf("name : %s  ", temp->name);
+    
+    printf("author : %s  ", temp->author);
+    
+    printf("publisher : %s  ", temp->publisher);
+
+		printf("price : %d  \n",temp->price);
+
+			item->link = temp->link;
+
+
+
+			free(temp);			
+
+			break ;
+
+		}
+
+
+
+		item = temp;
+
+	}
+
+	if(temp == NULL)
+
+	{
+
+		printf("Noone.\n");
+
+	}
+
+}
